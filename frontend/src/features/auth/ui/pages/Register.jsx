@@ -30,7 +30,7 @@ const Register = () => {
 
           {/* Logo */}
           <div className="relative z-10 p-6">
-            <h1 className="text-xl font-bold tracking-tight">Synthetix AI</h1>
+            <h1 className="text-xl font-bold tracking-tight">team-sync</h1>
           </div>
 
           {/* Decorative AI Graphic */}
@@ -327,7 +327,7 @@ const Register = () => {
 
       {/* ================= FOOTER ================= */}
       <footer className="flex min-h-13.5 items-center justify-between border-t border-white/10 px-5 text-[9px] text-gray-400">
-        <p className="text-base font-bold text-gray-200">Synthetix AI</p>
+        <p className="text-base font-bold text-gray-200">team-sync</p>
 
         <div className="hidden gap-6 md:flex">
           <span>Privacy Policy</span>
@@ -337,7 +337,7 @@ const Register = () => {
         </div>
 
         <p className="hidden md:block">
-          © 2024 Synthetix AI. Enterprise Intelligence Platforms.
+          © 2024 <team-sync></team-sync>. Enterprise Intelligence Platforms.
         </p>
       </footer>
     </div>

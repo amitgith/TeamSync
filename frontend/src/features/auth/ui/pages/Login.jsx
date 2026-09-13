@@ -20,7 +20,7 @@ const Login = () => {
             <span className="text-xl">✣</span>
           </div>
 
-          <h1 className="mt-3 text-[18px] font-bold">Synthetix AI</h1>
+          <h1 className="mt-3 text-[18px] font-bold">team-sync</h1>
 
           <p className="mt-1 text-[10px] text-gray-300">
             Sign in to your workspace
@@ -174,7 +174,7 @@ const Login = () => {
       {/* Footer */}
       <footer className="mx-auto mt-4 max-w-100 text-center">
         <p className="text-[9px] text-gray-600">
-          © 2024 Synthetix AI. Enterprise Intelligence Platforms.
+          © 2024 team-sync. Enterprise Intelligence Platforms.
         </p>
 
         <div className="mt-2 flex justify-center gap-4 text-[8px] text-gray-600">

@@ -8,6 +8,8 @@ import Home from "../../features/dashboard/ui/pages/Home";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { currentLoggedEmployee } from "../../features/auth/state/auth/authAction";
+import PublicRoute from "../../protectedRoutes/PublicRoute";
+import ProtectedRoute from "../../protectedRoutes/ProtectedRoute";
 const AppRoutes = () => {
   const dispatch = useDispatch();
   useEffect(() => {
@@ -18,25 +20,37 @@ const AppRoutes = () => {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <AuthLayout />,
+      element: <PublicRoute />,
       children: [
         {
           path: "",
-          element: <Login />,
-        },
-        {
-          path: "register",
-          element: <Register />,
+          element: <AuthLayout />,
+          children: [
+            {
+              path: "",
+              element: <Login />,
+            },
+            {
+              path: "register",
+              element: <Register />,
+            },
+          ],
         },
       ],
     },
     {
       path: "/home",
-      element: <DashboardLayout />,
+      element: <ProtectedRoute />,
       children: [
         {
           path: "",
-          element: <Home />,
+          element: <DashboardLayout />,
+          children: [
+            {
+              path: "",
+              element: <Home />,
+            },
+          ],
         },
       ],
     },
