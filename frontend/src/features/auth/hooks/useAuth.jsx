@@ -1,7 +1,10 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router";
+import { useDispatch } from "react-redux";
+import { loginEmployee } from "../state/auth/authAction";
 export const useAuth = () => {
+  const dispatch = useDispatch();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
 
@@ -14,6 +17,7 @@ export const useAuth = () => {
 
   const loginSubmit = (data) => {
     console.log("Login Data:", data);
+    dispatch(loginEmployee(data));
   };
   const registerSubmit = (data) => {
     console.log("Register Data:", data);
