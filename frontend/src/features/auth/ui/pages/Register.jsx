@@ -1,4 +1,3 @@
-import { Watch } from "react-hook-form";
 import { useAuth } from "../../hooks/useAuth";
 
 const Register = () => {
@@ -8,23 +7,11 @@ const Register = () => {
     register,
     handleSubmit,
     errors,
-    onregisterSubmit,
+    password,
+    registerSubmit,
+    strength,
+    navigate,
   } = useAuth();
-  const password = Watch("password", "");
-  const getPasswordStrength = () => {
-    if (!password) return 0;
-
-    let strength = 0;
-
-    if (password.length >= 8) strength++;
-    if (/[A-Z]/.test(password)) strength++;
-    if (/[0-9]/.test(password)) strength++;
-    if (/[^A-Za-z0-9]/.test(password)) strength++;
-
-    return strength;
-  };
-
-  const strength = getPasswordStrength();
 
   return (
     <div className="min-h-screen bg-[#111014] text-white">
@@ -36,9 +23,9 @@ const Register = () => {
           <div className="absolute inset-0">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_40%,rgba(72,116,190,0.35),transparent_45%)]" />
 
-            <div className="absolute left-[-10%] top-[20%] h-[500px] w-[500px] rounded-full bg-blue-500/10 blur-[100px]" />
+            <div className="absolute left-[-10%] top-[20%] h-125 w-125 rounded-full bg-blue-500/10 blur-[100px]" />
 
-            <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-gradient-to-t from-[#071226] via-[#071226]/80 to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 h-[45%] bg-linear-to-t from-[#071226] via-[#071226]/80 to-transparent" />
           </div>
 
           {/* Logo */}
@@ -47,13 +34,13 @@ const Register = () => {
           </div>
 
           {/* Decorative AI Graphic */}
-          <div className="absolute left-1/2 top-[22%] h-[340px] w-[340px] -translate-x-1/2">
-            <div className="absolute inset-0 rounded-[45%] bg-gradient-to-br from-blue-400/10 via-purple-400/10 to-transparent blur-xl" />
+          <div className="absolute left-1/2 top-[22%] h-85 w-85 -translate-x-1/2">
+            <div className="absolute inset-0 rounded-[45%] bg-linear-to-br from-blue-400/10 via-purple-400/10 to-transparent blur-xl" />
 
             {[...Array(18)].map((_, index) => (
               <div
                 key={index}
-                className="absolute left-1/2 top-1/2 h-[2px] origin-left bg-gradient-to-r from-blue-300/60 to-transparent"
+                className="absolute left-1/2 top-1/2 h-0.5 origin-left bg-linear-to-r from-blue-300/60 to-transparent"
                 style={{
                   width: `${120 + (index % 5) * 45}px`,
                   transform: `rotate(${index * 20}deg)`,
@@ -109,7 +96,7 @@ const Register = () => {
 
         {/* ================= RIGHT PANEL ================= */}
         <section className="flex flex-1 items-center justify-center px-6 py-10">
-          <div className="w-full max-w-[430px]">
+          <div className="w-full max-w-107.5">
             {/* Heading */}
             <div className="mb-8">
               <h2 className="text-2xl font-bold tracking-tight sm:text-3xl">
@@ -122,10 +109,7 @@ const Register = () => {
             </div>
 
             {/* Form */}
-            <form
-              onSubmit={handleSubmit(onregisterSubmit)}
-              className="space-y-5"
-            >
+            <form onSubmit={handleSubmit(registerSubmit)} className="space-y-5">
               {/* Full Name */}
               <div>
                 <label className="mb-2 block text-[10px] font-semibold">
@@ -236,7 +220,7 @@ const Register = () => {
                       {[1, 2, 3, 4].map((item) => (
                         <div
                           key={item}
-                          className={`h-[3px] flex-1 rounded-full ${
+                          className={`h-0.75 flex-1 rounded-full ${
                             item <= strength ? "bg-purple-400" : "bg-white/10"
                           }`}
                         />
@@ -267,7 +251,7 @@ const Register = () => {
                 <label className="flex cursor-pointer items-start gap-3">
                   <input
                     type="checkbox"
-                    className="mt-[2px] h-3.5 w-3.5 accent-purple-500"
+                    className="mt-0.5 h-3.5 w-3.5 accent-purple-500"
                     {...register("terms", {
                       required: "Please accept the terms",
                     })}
@@ -290,7 +274,7 @@ const Register = () => {
               {/* Submit */}
               <button
                 type="submit"
-                className="h-10 w-full rounded-md bg-gradient-to-r from-[#7452b9] to-[#c5a6ff] text-xs font-semibold text-[#17111f] transition hover:opacity-90 active:scale-[0.99]"
+                className="h-10 w-full rounded-md bg-linear-to-r from-[#7452b9] to-[#c5a6ff] text-xs font-semibold text-[#17111f] transition hover:opacity-90 active:scale-[0.99]"
               >
                 Create Account
               </button>
@@ -330,8 +314,9 @@ const Register = () => {
             <p className="mt-10 text-center text-xs text-gray-300">
               Already have an account?{" "}
               <button
+                onClick={() => navigate("/")}
                 type="button"
-                className="font-semibold text-purple-300 hover:text-purple-200"
+                className="font-semibold text-purple-300 hover:text-purple-200 cursor-pointer"
               >
                 Log In
               </button>
@@ -341,7 +326,7 @@ const Register = () => {
       </div>
 
       {/* ================= FOOTER ================= */}
-      <footer className="flex min-h-[54px] items-center justify-between border-t border-white/10 px-5 text-[9px] text-gray-400">
+      <footer className="flex min-h-13.5 items-center justify-between border-t border-white/10 px-5 text-[9px] text-gray-400">
         <p className="text-base font-bold text-gray-200">Synthetix AI</p>
 
         <div className="hidden gap-6 md:flex">
