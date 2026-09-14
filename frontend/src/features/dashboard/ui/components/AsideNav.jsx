@@ -5,7 +5,7 @@ const AsideNav = () => {
     <div>
       <div className="flex flex-col gap-1">
         <h1 className="text-3xl font-semibold text-[#CAB8F9]">team-sync</h1>
-        <p className="text-sm text-[var(--text-secondary)]">
+        <p className="text-sm text-(--text-secondary)">
           Enterprise Workspace
         </p>
       </div>
