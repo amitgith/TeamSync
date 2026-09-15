@@ -1,5 +1,7 @@
 import React from "react";
 import { NavLink } from "react-router";
+import NavigationTab from "./NavigationTab";
+import { ChartArea } from "lucide-react";
 
 const AsideNav = () => {
   return (
@@ -9,7 +11,11 @@ const AsideNav = () => {
         <p className="text-sm text-(--text-secondary)">Enterprise Workspace</p>
       </div>
       <div>
-        <NavLink to={"/home/department"}>Department</NavLink>
+        <NavigationTab
+          path={"/home/employee"}
+          Icon={<ChartArea />}
+          title={"Employee"}
+        />
       </div>
     </div>
   );
